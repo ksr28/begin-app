@@ -5,7 +5,7 @@ async function render(payload) {
 
   if (payload.error === 'not_authorized') {
     let main = document.getElementsByTagName('main')[0]
-    main.innerHTML = `<h1>Kewl ToDos</h1> <a href=${payload.href}>${payload.message}</a>`
+    main.innerHTML = `<h1>RQ ToDos</h1> <a href=${payload.href}>${payload.message}</a>`
     return;
   }
 
