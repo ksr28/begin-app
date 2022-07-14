@@ -6,6 +6,7 @@ module.exports = async function auth(req) {
   try{
     let verified_user = jwt.verify(x_auth_token, jwt_secret);
     req.headers['user'] = verified_user;
+
   } catch (e){
     let client_id = process.env.GITHUB_CLIENT_ID
     let redirect_uri = process.env.GITHUB_REDIRECT
