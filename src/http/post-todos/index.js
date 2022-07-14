@@ -4,8 +4,9 @@ let read = require('@architect/shared/read')
 let data = require('@begin/data')
 
 async function create(req) {
+  let user = req.headers.user;
   await data.set({
-    table: `todos-${req.session.account.id}`, 
+    table: `todos-${user.id}`, 
     ...req.body
   })
 }

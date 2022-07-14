@@ -9,8 +9,10 @@ get /login  # create github oauth session
 get /logout # clear session
 
 # json api
+get /*
 get /todos
 post /todos
+options /*
 put /todos/:key
 delete /todos/:key
 

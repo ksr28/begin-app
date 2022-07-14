@@ -1,4 +1,6 @@
 let tiny = require('tiny-json-http')
+var jwt = require('jsonwebtoken');
+let jwt_secret = process.env.JWT_SECRET
 
 module.exports = async function github(req) {
 
@@ -25,9 +27,19 @@ module.exports = async function github(req) {
     },
   })
 
+  let jwt_token = jwt.sign({
+    token,
+    name: user.body.name,
+    login: user.body.login,
+    id: user.body.id,
+    url: user.body.url,
+    avatar: user.body.avatar_url
+  }, jwt_secret);
+
   // create a clean acccount obj
   return {
     token,
+    jwt_token,
     name: user.body.name,
     login: user.body.login,
     id: user.body.id,
