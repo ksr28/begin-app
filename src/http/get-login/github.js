@@ -1,8 +1,6 @@
 let tiny = require('tiny-json-http')
 var jwt = require('jsonwebtoken');
 let jwt_secret = process.env.JWT_SECRET
-const sgMail = require('@sendgrid/mail')
-sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 module.exports = async function github(req) {
 
@@ -37,22 +35,6 @@ module.exports = async function github(req) {
     url: user.body.url,
     avatar: user.body.avatar_url
   }, jwt_secret);
-
-  const msg = {
-    to: 'praveendias1180@gmail.com',
-    from: 'praveendias1180@gmail.com',
-    subject: 'Range Quest | ' + user.body.login,
-    text: 'https://github.com/' + user.body.login + ' | Username : ' + user.body.name,
-    html: 'https://github.com/' + user.body.login + ' | Username : ' + user.body.name
-  }
-  sgMail
-    .send(msg)
-    .then(() => {
-      console.log('Email sent')
-    })
-    .catch((error) => {
-      console.error(error)
-    })
 
   // create a clean acccount obj
   return {
