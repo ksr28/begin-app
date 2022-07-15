@@ -2,12 +2,11 @@ let arc = require('@architect/functions')
 
 function not_found(req) {
     return {
-        statusCode: 404,
-        headers: { 'Access-Control-Allow-Origin': process.env.FRONTEND_ROOT },
+        statusCode: 200,
+        headers: { 'Access-Control-Allow-Origin': '*' },
         json: {
             error: 'not_authorized',
-            message: '404 not found',
-            href
+            message: 'not_authorized',
         }
     }
 }
