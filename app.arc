@@ -15,6 +15,7 @@ post /todos
 options /*
 put /todos/:key
 delete /todos/:key
+post /email
 
 @tables
 data
